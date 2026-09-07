@@ -32,6 +32,10 @@ digital-design-portfolio/
 │   └── register4/
 │       ├── register4.sv
 │       └── register4_tb.sv
+├── 02_sequential_design/ 
+│   └── counter/ 
+|       ├── counter.sv 
+│       └── counter_tb.sv
 └── docs/
 ```
 
