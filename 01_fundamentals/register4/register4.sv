@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module register4(
     input  logic       clk,
     input  logic       reset,
