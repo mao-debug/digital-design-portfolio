@@ -81,4 +81,4 @@ initial begin
     $finish;
 end
     
-end module
+endmodule
