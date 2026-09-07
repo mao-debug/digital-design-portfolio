@@ -14,7 +14,7 @@ This repository documents my development in combinational logic, sequential logi
 | 2:1 Multiplexer | Boolean implementation of selection logic                                          | Exhaustive testing of all `a`, `b`, and `sel` combinations       |
 | D Flip-Flop     | Sequential logic, rising-edge capture, asynchronous reset, nonblocking assignments | Directed tests for capture, reset, and state retention           |
 | 4-Bit Register  | Multi-bit sequential storage, asynchronous reset, clocked data capture             | Directed tests for reset, hold behavior, and rising-edge capture |
-
+| Synchronous Counter      | 🚧 In Progress | Sequential counting, enable control, fixed-width overflow and wraparound           | Planned: directed testing of reset, enable, hold, increment, and overflow behavior |
 ## Repository Structure
 
 ```text
