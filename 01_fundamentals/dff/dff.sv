@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module dff(
     input  clk,
     input  reset,
