@@ -53,7 +53,7 @@ module register4_tb;
         end
         else begin
             failed_tests++;
-            $display("FAIL: q=%b expected=%b", expected, q);
+            $display("FAIL: q=%b expected=%b", q, expected);
         end
 
         // Test 2
@@ -69,7 +69,7 @@ module register4_tb;
         end
         else begin
             failed_tests++;
-            $display("FAIL: q=%b expected=%b", expected, q);
+            $display("FAIL: q=%b expected=%b", q, expected);
         end
 
         // Test 3
