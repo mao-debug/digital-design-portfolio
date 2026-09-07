@@ -3,15 +3,14 @@
 module and_gate_tb;
 
     // Testbench signals
-    reg a;
-    reg b;
-    wire y;
+    logic a;
+    logic b;
+    logic y;
 
     // Expected output and counters
-    reg expected;
-    reg total_tests;
-    reg passed_tests;
-    reg failed_tests;
+    int total_tests;
+    int passed_tests;
+    int failed_tests;
 
     // Device Under Test
     and_gate dut (
@@ -19,98 +18,40 @@ module and_gate_tb;
         .b(b),
         .y(y)
     );
-
+    
+    //Use Tasks to run tests
+    task run_test(
+    input logic test_a,
+    input logic test_b,
+    input logic expected_y
+    );
+        a = test_a;
+        b = test_b;
+        
+        #10;
+        
+        total_tests++;
+        
+        if (y == expected_y) begin
+            passed_tests++;
+        end
+        else begin
+            failed_tests++;
+            $display("FAIL: a=%b b=%b expected=%b actual=%b", a, b, expected_y, y);
+        end
+    endtask
+    
     initial begin
-
         // Initialize counters
         total_tests = 0;
         passed_tests = 0;
         failed_tests = 0;
-
-
-        // Test 1: 0 AND 0 = 0
-        a = 0;
-        b = 0;
-        expected = 0;
-
-        #10;
-
-        total_tests++;
-
-        if (y == expected) begin
-            passed_tests++;
-        end
-        else begin
-            failed_tests++;
-            $display(
-                "FAIL: a=%b b=%b expected=%b actual=%b",
-                a, b, expected, y
-            );
-        end
-
-
-        // Test 2: 0 AND 1 = 0
-        a = 0;
-        b = 1;
-        expected = 0;
-
-        #10;
-
-        total_tests++;
-
-        if (y == expected) begin
-            passed_tests++;
-        end
-        else begin
-            failed_tests++;
-            $display(
-                "FAIL: a=%b b=%b expected=%b actual=%b",
-                a, b, expected, y
-            );
-        end
-
-
-        // Test 3: 1 AND 0 = 0
-        a = 1;
-        b = 0;
-        expected = 0;
-
-        #10;
-
-        total_tests++;
-
-        if (y == expected) begin
-            passed_tests++;
-        end
-        else begin
-            failed_tests++;
-            $display(
-                "FAIL: a=%b b=%b expected=%b actual=%b",
-                a, b, expected, y
-            );
-        end
-
-
-        // Test 4: 1 AND 1 = 1
-        a = 1;
-        b = 1;
-        expected = 1;
-
-        #10;
-
-        total_tests++;
-
-        if (y == expected) begin
-            passed_tests++;
-        end
-        else begin
-            failed_tests++;
-            $display(
-                "FAIL: a=%b b=%b expected=%b actual=%b",
-                a, b, expected, y
-            );
-        end
-
+        
+        // Run tests through tasks
+        run_test(1'b0, 1'b0, 1'b0);
+        run_test(1'b0, 1'b1, 1'b0);
+        run_test(1'b1, 1'b0, 1'b0);
+        run_test(1'b1, 1'b1, 1'b1);
 
         // Final summary
         $display("========================");
