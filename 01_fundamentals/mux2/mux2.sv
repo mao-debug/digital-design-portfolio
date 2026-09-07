@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module mux2(
 	input logic a,
 	input logic b,
